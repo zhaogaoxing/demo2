@@ -1,4 +1,5 @@
 #include "PlayScene.h"
+#include "PlayScene2.h"
 #include "HelloWorldScene.h"
 USING_NS_CC;
 
@@ -66,8 +67,12 @@ bool PlayScene::init()
 		CC_CALLBACK_1(PlayScene::OnBack, this));
 	backMenu->setTag(BACK_TAG);
 
+	auto nextLabel = Label::createWithTTF("NEXT SCENE", "fonts/LittleLordFontleroy.ttf", 50);
+	auto nextMenu = MenuItemLabel::create(nextLabel,
+		CC_CALLBACK_1(PlayScene::OnNext, this));
 
-	auto mn = Menu::create(placeMenu, flipXMenu, flipYMenu, hideMenu, toggleMenu, backMenu, NULL);
+
+	auto mn = Menu::create(placeMenu, flipXMenu, flipYMenu, hideMenu, toggleMenu, backMenu,nextMenu, NULL);
 	mn->alignItemsVertically();
 	this->addChild(mn);
 
@@ -92,5 +97,12 @@ void PlayScene::OnBack(Ref * pSender)
 {
 	auto sc = HelloWorld::createScene();
 	auto reScene = TransitionSlideInL::create(1.0f, sc);
+	Director::getInstance()->replaceScene(reScene);
+}
+
+void PlayScene::OnNext(Ref * pSender)
+{
+	auto ss = PlayScene2::createScene();
+	auto reScene = TransitionSlideInR::create(1.0f, ss);
 	Director::getInstance()->replaceScene(reScene);
 }

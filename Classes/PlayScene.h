@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 #include "MyActionScene.h"
 
-typedef enum
+typedef enum one
 {
 	PLACE_TAG = 102
 	, FLIPX_TAG
@@ -12,6 +12,7 @@ typedef enum
 	, HIDE_SHOW_TAG
 	, TOGGLE_TAG
 	, BACK_TAG
+	,NEXT_TAG
 }ActionTypes;
 
 class PlayScene : public cocos2d::Layer
@@ -23,6 +24,7 @@ public:
 
 	void OnClikMenu(cocos2d::Ref * pSender);
 	void OnBack(cocos2d::Ref * pSender);
+	void OnNext(cocos2d::Ref * pSender);
 
 	CREATE_FUNC(PlayScene);
 };
