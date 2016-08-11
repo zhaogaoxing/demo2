@@ -1,4 +1,5 @@
 #include "PlayScene.h"
+#include "HelloWorldScene.h"
 USING_NS_CC;
 
 Scene* PlayScene::createScene()
@@ -28,7 +29,8 @@ bool PlayScene::init()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
-	Sprite * bg = Sprite::create("girlBG.jpg");
+	Sprite * bg = Sprite::create("girls/prettygirl5.jpg");
+	bg->setScale(1.5, 1.5);
 	bg->setPosition(Vec2(origin.x + visibleSize.width / 2,
 		origin.y + visibleSize.height / 2));
 	/*bg->setAnchorPoint(Vec2::ZERO);*/
@@ -59,7 +61,13 @@ bool PlayScene::init()
 		CC_CALLBACK_1(PlayScene::OnClikMenu, this));
 	toggleMenu->setTag(TOGGLE_TAG);
 
-	auto mn = Menu::create(placeMenu, flipXMenu, flipYMenu, hideMenu, toggleMenu, NULL);
+	auto backLabel = Label::createWithTTF("Back", "fonts/LittleLordFontleroy.ttf", 50);
+	auto backMenu = MenuItemLabel::create(backLabel,
+		CC_CALLBACK_1(PlayScene::OnBack, this));
+	backMenu->setTag(BACK_TAG);
+
+
+	auto mn = Menu::create(placeMenu, flipXMenu, flipYMenu, hideMenu, toggleMenu, backMenu, NULL);
 	mn->alignItemsVertically();
 	this->addChild(mn);
 
@@ -77,5 +85,12 @@ void PlayScene::OnClikMenu(Ref * pSender)
 	sc->addChild(layer);
 
 	auto reScene = TransitionSlideInR::create(1.0f, sc);
+	Director::getInstance()->replaceScene(reScene);
+}
+
+void PlayScene::OnBack(Ref * pSender)
+{
+	auto sc = HelloWorld::createScene();
+	auto reScene = TransitionSlideInL::create(1.0f, sc);
 	Director::getInstance()->replaceScene(reScene);
 }

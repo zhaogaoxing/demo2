@@ -44,19 +44,19 @@ bool HelloWorld::init()
 	MenuItemSprite * startMenuItem = MenuItemSprite:: create(startSpriteNormal,
 		startSpriteSelected,
 		CC_CALLBACK_1(HelloWorld::menuItemStartCallback, this));
-	startMenuItem->setPosition(Director::getInstance()->convertToGL(Vec2(512,500)));
+	startMenuItem->setPosition(Director::getInstance()->convertToGL(Vec2(visibleSize.width / 2, visibleSize.height / 2)));
 	//设置图片菜单项
 	MenuItemImage * settingMenuItem = MenuItemImage::create(
 		"Options.png",
 		"Options_on.png",
 		CC_CALLBACK_1(HelloWorld::menuItemSettingCallback, this));
-	settingMenuItem->setPosition(Director::getInstance()->convertToGL(Vec2(412, 600)));
+	settingMenuItem->setPosition(Director::getInstance()->convertToGL(Vec2(visibleSize.width / 2 - 100, visibleSize.height / 2 +100)));
 	//商店图片菜单项
 	MenuItemImage * helpMenuItem = MenuItemImage::create(
 		"Store.png",
 		"Store_on.png",
 		CC_CALLBACK_1(HelloWorld::menuItemHelpCallback, this));
-	helpMenuItem->setPosition(Director::getInstance()->convertToGL(Vec2(612, 600)));
+	helpMenuItem->setPosition(Director::getInstance()->convertToGL(Vec2(visibleSize.width / 2 + 100, visibleSize.height / 2 + 100)));
 
 	Menu * mu = Menu::create(startMenuItem, settingMenuItem, helpMenuItem, NULL);
 	mu->setPosition(Vec2::ZERO);

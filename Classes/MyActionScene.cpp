@@ -27,7 +27,8 @@ bool MyAction::init()
 	}
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
-	Sprite * bg = Sprite::create("girlBG.jpg");
+	Sprite * bg = Sprite::create("girls/prettygirl6.jpg");
+	bg->setScale(0.8, 0.8);
 	bg->setPosition(Vec2(origin.x + visibleSize.width / 2,
 		origin.y + visibleSize.height / 2));
 	/*bg->setAnchorPoint(Vec2::ZERO);*/
@@ -35,10 +36,11 @@ bool MyAction::init()
 
 	sprite = Sprite::create("Plane.jpg");
 	sprite->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+	sprite->setScale(0.3, 0.3);
 	this->addChild(sprite);
 
 	auto backMenuItem = MenuItemImage::create("CloseNormal.png", "CloseSelected.png",
-		CC_CALLBACK_1(MyAction::goMenu, this));
+		CC_CALLBACK_1(MyAction::backMenu, this));
 	backMenuItem->setPosition(Director::getInstance()->convertToGL(Vec2(120, 100)));
 
 	auto goMenuItem = MenuItemImage::create("CloseNormal.png", "CloseSelected.png",

@@ -11,6 +11,7 @@ typedef enum
 	, FLIPY_TAG
 	, HIDE_SHOW_TAG
 	, TOGGLE_TAG
+	, BACK_TAG
 }ActionTypes;
 
 class PlayScene : public cocos2d::Layer
@@ -21,6 +22,7 @@ public:
 	virtual bool init();
 
 	void OnClikMenu(cocos2d::Ref * pSender);
+	void OnBack(cocos2d::Ref * pSender);
 
 	CREATE_FUNC(PlayScene);
 };
