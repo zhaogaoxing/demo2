@@ -34,7 +34,7 @@ bool MyAction2::init()
 	/*bg->setAnchorPoint(Vec2::ZERO);*/
 	this->addChild(bg, 0);
 
-	sprite = Sprite::create("catong.png");
+	sprite = Sprite::create("catong2.png");
 	sprite->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 	sprite->setScale(1, 1);
 	this->addChild(sprite);

@@ -30,7 +30,8 @@ bool HelloWorld::init()
 
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-	Sprite * bg = Sprite::create("girlBG.jpg");
+	Sprite * bg = Sprite::create("background/backgirl2.jpg");
+	bg->setScale(1.6, 1.6);
 	bg->setPosition(Vec2(origin.x + visibleSize.width / 2,
 		origin.y + visibleSize.height / 2));
 	/*bg->setAnchorPoint(Vec2::ZERO);*/
