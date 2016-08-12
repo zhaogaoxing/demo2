@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include "PlayScene3.h"
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -111,8 +112,9 @@ void HelloWorld::menuItemStartCallback(Ref * pSender)
 }
 void HelloWorld::menuItemHelpCallback(Ref * pSender)
 {
-	MenuItem * item = (MenuItem *)pSender;
-	log("Touch", item);
+	auto sd = PlayScene3::createScene();
+	auto reScene = TransitionFadeTR::create(1.0f, sd);
+	Director::getInstance()->pushScene(reScene);
 }
 
 void HelloWorld::menuItem1Callback(Ref * pSender)
