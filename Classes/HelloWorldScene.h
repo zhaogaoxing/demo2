@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 #include "SettingScene.h"
 #include "PlayScene.h"
-
+#include "PlayScene4.h"
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -22,8 +22,8 @@ public:
 	void menuItemSettingCallback(cocos2d::Ref * pSender);
 	void menuItemStartCallback(cocos2d::Ref * pSender);
 	void menuItemHelpCallback(cocos2d::Ref * pSender);
+	void menuItemSpeedCallback(cocos2d::Ref * pSender);
 
-	void menuItem1Callback(cocos2d::Ref * pSender);
 
     CREATE_FUNC(HelloWorld);
 };

@@ -1,5 +1,6 @@
 #include "HelloWorldScene.h"
 #include "PlayScene3.h"
+#include "PlayScene4.h"
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -59,14 +60,24 @@ bool HelloWorld::init()
 		"Store_on.png",
 		CC_CALLBACK_1(HelloWorld::menuItemHelpCallback, this));
 	helpMenuItem->setPosition(Director::getInstance()->convertToGL(Vec2(visibleSize.width / 2 + 100, visibleSize.height / 2 + 100)));
+	
+	//动作速度控制
+	/*MenuItemFont::setFontName("Times New Roman");
+	MenuItemFont::setFontSize(40);*/
+	//MenuItemFont::setColor(Color3B(100, 100, 100));
+	MenuItemImage * itemSpeed = MenuItemImage::create(
+		"Store.png",
+		"Store_on.png",
+		CC_CALLBACK_1(HelloWorld::menuItemSpeedCallback, this));
+	itemSpeed->setPosition(Director::getInstance()->convertToGL(Vec2(visibleSize.width / 2 - 100, visibleSize.height / 2 + 200)));
 
-	Menu * mu = Menu::create(startMenuItem, settingMenuItem, helpMenuItem, NULL);
+	Menu * mu = Menu::create(startMenuItem, settingMenuItem, helpMenuItem,itemSpeed, NULL);
 	mu->setPosition(Vec2::ZERO);
 	this->addChild(mu);
 	//开关菜单
 
 	//文本类型的开关
-	MenuItemFont::setFontSize(80);
+	/*MenuItemFont::setFontSize(80);
 	auto toggleMenuItem = MenuItemToggle::createWithCallback(
 		CC_CALLBACK_1(HelloWorld::menuItem1Callback, this),
 		MenuItemFont::create("on"),
@@ -75,7 +86,7 @@ bool HelloWorld::init()
 	toggleMenuItem->setColor(Color3B(255, 255, 255));
 	toggleMenuItem->setPosition(
 		Director::getInstance()->convertToGL(Vec2(512, 400)));
-
+*/
 
 	
 	////sprite 精灵的创建
@@ -117,10 +128,11 @@ void HelloWorld::menuItemHelpCallback(Ref * pSender)
 	Director::getInstance()->pushScene(reScene);
 }
 
-void HelloWorld::menuItem1Callback(Ref * pSender)
+void HelloWorld::menuItemSpeedCallback(Ref * pSender)
 {
-	MenuItem * item = (MenuItem *)pSender;
-	log("Touch", item);
+	auto speed = PlayScene4::createScene();
+	auto reScene = TransitionFadeTR::create(1.0f, speed);
+	Director::getInstance()->pushScene(reScene);
 }
 
 

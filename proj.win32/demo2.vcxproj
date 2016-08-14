@@ -149,9 +149,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\MyActionScene.cpp" />
     <ClCompile Include="..\Classes\MyActionScene2.cpp" />
     <ClCompile Include="..\Classes\MyActionScene3.cpp" />
+    <ClCompile Include="..\Classes\MyActionScene4.cpp" />
     <ClCompile Include="..\Classes\PlayScene.cpp" />
     <ClCompile Include="..\Classes\PlayScene2.cpp" />
     <ClCompile Include="..\Classes\PlayScene3.cpp" />
+    <ClCompile Include="..\Classes\PlayScene4.cpp" />
     <ClCompile Include="..\Classes\SettingScene.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -161,9 +163,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\MyActionScene.h" />
     <ClInclude Include="..\Classes\MyActionScene2.h" />
     <ClInclude Include="..\Classes\MyActionScene3.h" />
+    <ClInclude Include="..\Classes\MyActionScene4.h" />
     <ClInclude Include="..\Classes\PlayScene.h" />
     <ClInclude Include="..\Classes\PlayScene2.h" />
     <ClInclude Include="..\Classes\PlayScene3.h" />
+    <ClInclude Include="..\Classes\PlayScene4.h" />
     <ClInclude Include="..\Classes\SettingScene.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
