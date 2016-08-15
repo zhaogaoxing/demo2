@@ -2,6 +2,7 @@
 #include "PlayScene3.h"
 #include "PlayScene4.h"
 #include "PlayScene5.h"
+#include "PlayScene6.h"
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -71,7 +72,7 @@ bool HelloWorld::init()
 		"Store_on.png",
 		CC_CALLBACK_1(HelloWorld::menuItemSpeedCallback, this));
 	itemSpeed->setPosition(Director::getInstance()->convertToGL(Vec2(visibleSize.width / 2 - 100, visibleSize.height / 2 + 200)));
-
+	//函数回调
 	MenuItemFont::setFontName("Times New Roman");
 	MenuItemFont::setFontSize(40);
 	MenuItemFont * FuncItem = MenuItemFont::create(
@@ -79,7 +80,15 @@ bool HelloWorld::init()
 		CC_CALLBACK_1(HelloWorld::menuItemFuncCallback, this));
 	FuncItem->setPosition(Director::getInstance()->convertToGL(Vec2(visibleSize.width / 2 + 100, visibleSize.height / 2 + 200)));
 
-	Menu * mu = Menu::create(startMenuItem, settingMenuItem, helpMenuItem, itemSpeed, FuncItem, NULL);
+	//cocos中的特效
+	MenuItemFont::setFontName("Times New Roman");
+	MenuItemFont::setFontSize(40);
+	MenuItemFont* SpecItem = MenuItemFont::create(
+		"Special effects",
+		CC_CALLBACK_1(HelloWorld::menuItemSpecCallback, this));
+	SpecItem->setPosition(Director::getInstance()->convertToGL(Vec2(visibleSize.width / 2 - 100, visibleSize.height / 2 + 300)));
+
+	Menu * mu = Menu::create(startMenuItem, settingMenuItem, helpMenuItem, itemSpeed, FuncItem, SpecItem, NULL);
 	mu->setPosition(Vec2::ZERO);
 	this->addChild(mu);
 	//开关菜单
@@ -150,6 +159,12 @@ void HelloWorld::menuItemFuncCallback(Ref * pSender)
 	Director::getInstance()->pushScene(reScene);
 }
 
+void HelloWorld::menuItemSpecCallback(Ref*pSender)
+{
+	auto Spec = PlayScene6::createScene();
+	auto reScene = TransitionFadeTR::create(1.0f, Spec);
+	Director::getInstance()->pushScene(reScene);
+}
 
 void HelloWorld::onEnterTransitionDidFinish()
 {

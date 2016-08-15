@@ -25,6 +25,7 @@ public:
 	void menuItemHelpCallback(cocos2d::Ref * pSender);
 	void menuItemSpeedCallback(cocos2d::Ref * pSender);
 	void menuItemFuncCallback(cocos2d::Ref * pSender);
+	void menuItemSpecCallback(cocos2d::Ref * pSender);
 
 
     CREATE_FUNC(HelloWorld);
