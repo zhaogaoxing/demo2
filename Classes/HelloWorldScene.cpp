@@ -1,6 +1,7 @@
 #include "HelloWorldScene.h"
 #include "PlayScene3.h"
 #include "PlayScene4.h"
+#include "PlayScene5.h"
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -71,7 +72,14 @@ bool HelloWorld::init()
 		CC_CALLBACK_1(HelloWorld::menuItemSpeedCallback, this));
 	itemSpeed->setPosition(Director::getInstance()->convertToGL(Vec2(visibleSize.width / 2 - 100, visibleSize.height / 2 + 200)));
 
-	Menu * mu = Menu::create(startMenuItem, settingMenuItem, helpMenuItem,itemSpeed, NULL);
+	MenuItemFont::setFontName("Times New Roman");
+	MenuItemFont::setFontSize(40);
+	MenuItemFont * FuncItem = MenuItemFont::create(
+		"Function",
+		CC_CALLBACK_1(HelloWorld::menuItemFuncCallback, this));
+	FuncItem->setPosition(Director::getInstance()->convertToGL(Vec2(visibleSize.width / 2 + 100, visibleSize.height / 2 + 200)));
+
+	Menu * mu = Menu::create(startMenuItem, settingMenuItem, helpMenuItem, itemSpeed, FuncItem, NULL);
 	mu->setPosition(Vec2::ZERO);
 	this->addChild(mu);
 	//¿ª¹Ø²Ëµ¥
@@ -135,6 +143,12 @@ void HelloWorld::menuItemSpeedCallback(Ref * pSender)
 	Director::getInstance()->pushScene(reScene);
 }
 
+void HelloWorld::menuItemFuncCallback(Ref * pSender)
+{
+	auto Func = PlayScene5::createScene();
+	auto reScene = TransitionFadeTR::create(1.0f, Func);
+	Director::getInstance()->pushScene(reScene);
+}
 
 
 void HelloWorld::onEnterTransitionDidFinish()
